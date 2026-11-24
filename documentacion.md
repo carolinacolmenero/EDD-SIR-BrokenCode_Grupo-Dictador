@@ -4,29 +4,8 @@
 
 ### 1. Planificar e instalar la máquina virtual
 
-Antes de crear la máquina virtual, revisamos el equipo anfitrión para repartir sus recursos.
+Para instalar una máquina virtual con **Ubuntu** sobre un equipo con **Windows 11 Pro**, procesador **Intel Core i5-11400** (6 núcleos físicos y 12 hilos) y **16 GB de RAM** (15,8 GB utilizables), una propuesta equilibrada consiste en asignar **4 GB de RAM**, **4 núcleos de procesador** y un **disco virtual VDI de 50 GB con reserva dinámica**.
 
-**Recursos de nuestro equipo anfitrión (*Host*):**
-
-- **Sistema operativo:** Microsoft Windows 11 Pro.
-- **Procesador:** 11th Gen Intel® Core™ i5-11400 @ 2.60 GHz (6 núcleos físicos y 12 hilos).
-- **Memoria RAM:** 16,0 GB instalados (15,8 GB utilizables).
-- **Placa base:** Gigabyte Technology Co., Ltd. H510M H.
-
-![Información del sistema anfitrión](imgs/recursos.png)
-
-**Justificación técnica de los recursos asignados:**
-
-- **Memoria RAM (4 GB):** Le asignamos 4 GB para que Ubuntu funcione con fluidez y quede memoria disponible para Windows.
-
-  ![Memoria RAM de la máquina virtual](imgs/ram.png)
-
-- **Procesamiento (4 núcleos CPU):** Asignamos 4 núcleos a la máquina virtual y dejamos 2 para Windows.
-
-  ![Núcleos de la máquina virtual](imgs/nucleos.png)
-
-- **Almacenamiento (VDI dinámico de 50 GB):** Elegimos **VDI** con reserva dinámica. El archivo crece según el espacio que ocupa Ubuntu, hasta un máximo de 50 GB.
-
-  ![Disco virtual con reserva dinámica](imgs/almacenamientoDinamico.png)
-
----
+* **Memoria RAM (4 GB):** Da suficiente holgura para que Ubuntu, su entorno gráfico y las aplicaciones de trabajo o desarrollo funcionen sin tirones, mientras deja unos **11,8 GB utilizables** para Windows 11 Pro y evita que el sistema anfitrión se sature o recurra en exceso a la memoria virtual.
+* **Procesamiento (4 núcleos):** Aprovecha la mayor parte de los **6 núcleos físicos** disponibles para acelerar compilaciones, actualizaciones y tareas dentro de Ubuntu, pero conserva **2 núcleos físicos libres** para que Windows 11 Pro siga respondiendo con normalidad en segundo plano.
+* **Almacenamiento (50 GB en formato VDI dinámico):** Ofrece espacio de sobra para paquetes, herramientas y archivos de proyecto sin obligar a reservar los 50 GB desde el principio, ya que el archivo crece de forma progresiva según el espacio que vaya ocupando la máquina virtual.
