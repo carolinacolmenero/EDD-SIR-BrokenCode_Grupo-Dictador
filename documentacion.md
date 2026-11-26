@@ -105,3 +105,30 @@ Se creó y depuró el script `backup.sh` con `nano` para automatizar el respaldo
 
   ![Incidencia de sintaxis en el script backup.sh](imgs/scriptBackupErrorSintaxis.png)
   ![Script backup.sh corregido con tar](imgs/scriptBackupCorregido.png)
+
+### 3. Preparar el entorno Java
+
+#### Punto 1. Instalación del JDK y Visual Studio Code
+
+Instalamos el JDK con `sudo apt install default-jdk -y`. Incluye las herramientas necesarias para compilar y ejecutar programas Java. Después descargamos Visual Studio Code, que usaremos para editar y trabajar con el proyecto.
+
+![Instalación del JDK en Ubuntu](imgs/instalarJdk.png)
+![Descarga de Visual Studio Code](imgs/descargaVscode.png)
+
+#### Punto 2. Extensiones y opciones del entorno
+
+Instalamos **Extension Pack for Java** desde el apartado de extensiones de VS Code. Incluye herramientas para editar código Java, ejecutarlo, depurarlo y trabajar con proyectos. En sus opciones podemos activar o desactivar las actualizaciones automáticas y añadir o quitar extensiones según nuestras necesidades.
+
+![Extension Pack for Java y opción de actualización automática](imgs/scodeExtensionPackJava.png)
+
+#### Punto 3. Preparación de una tarea habitual
+
+Creamos un archivo Java desde VS Code para disponer de un programa inicial. También dejamos preparada la ejecución desde el entorno, para poder compilar y ejecutar el programa sin tener que escribir los comandos manualmente cada vez.
+
+![Creación de un archivo desde Visual Studio Code](imgs/3.3_creacionArchivo.png)
+
+#### Punto 4. Prueba de compilación y ejecución
+
+Antes de modificar el proyecto, comprobamos que el programa inicial se compila y se ejecuta correctamente desde VS Code. La salida `Hola Mundo` en el terminal confirma que el entorno Java y la tarea de ejecución funcionan.
+
+![Configuración de compilación y ejecución, y resultado Hola Mundo](imgs/3.3-3.4_confTarea_compilacionEjecucion.png)
