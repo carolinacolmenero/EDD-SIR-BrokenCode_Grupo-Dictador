@@ -81,18 +81,27 @@ Los sistemas de archivos organizan cómo se guardan los datos. **ext4** es habit
 ![Consulta de sistemas de archivos con df](imgs/sistemasArchivosDf.png)
 
 #### Copia de seguridad
+- **Copia de seguridad de datos de trabajo y comprobación de restauración:** Para proteger los datos y el entorno de trabajo se realizó una **clonación completa** de la máquina virtual `Pratica-Tiozeio` desde Oracle VirtualBox bajo el nombre **"Copia de seguridad"** (tomando el estado actual), generando una réplica íntegra y operativa del sistema listo para restaurarse ante cualquier fallo grave.
 
-<!-- Rehacer -->
+  ![Clonación completa de la máquina virtual como copia de seguridad](imgs/clonacionVmCopiaSeguridad.png)
 
-#### Restauración y automatización
+  > **INCIDENCIA 01 — Alcance insuficiente en la copia de seguridad inicial**
+  > - **Problema detectado:** En una primera prueba se realizó una copia manual mediante `cp -r ~/Documentos/Proyecto ~/CopiasSeguridad/` sobre un directorio concreto y se comprobó su restauración borrando y recuperando `prueba.txt` con `tree`. Sin embargo, este método solo protegía una carpeta puntual sin compresión, sin marcas de tiempo y dejando desprotegidas las configuraciones del sistema, las herramientas instaladas y el entorno de desarrollo completo.
+  > - **Resolución aplicada:** Se amplió la estrategia de protección en dos niveles: por un lado, realizando una **clonación completa de la máquina virtual** en VirtualBox para salvaguardar todo el entorno listo para arrancar; y por otro, automatizando copias comprimidas en formato `.tar.gz` mediante `tar` y `cron` para los archivos de trabajo diarios.
 
-Comprobamos la copia restaurando los archivos y revisando que el proyecto se pueda utilizar. Una utilidad sencilla para gestionar copias es `rsync`, que sincroniza carpetas. Podemos automatizar la copia con un script como este:
+  ![Primera prueba de copia manual con cp -r](imgs/copiaManualInicial.png)
+  ![Comprobación de restauración en la prueba inicial con cp](imgs/restauracionManualInicial.png)
 
-```bash
-#!/bin/bash
-rsync -av "$HOME/Proyecto/" "$HOME/Copias/Proyecto/"
-```
+- **Evaluación de utilidad y automatización de tareas:** Para la gestión y respaldo de información en Linux se evaluó **`tar`** (junto con compresión gzip, `-czf`), una utilidad estándar de línea de comandos muy práctica para empaquetar y comprimir directorios completos en un único archivo (`.tar.gz`) de forma rápida y reproducible, ideal para copias locales o scripts.
 
-Al guardarlo como `copia.sh`, darle permiso de ejecución con `chmod +x copia.sh` y programarlo con `crontab -e`, la copia puede ejecutarse automáticamente. Por ejemplo, `0 18 * * * /home/usuario/copia.sh` la ejecuta cada día a las 18:00.
+Se creó y depuró el script `backup.sh` con `nano` para automatizar el respaldo de `Documentos` hacia `/home/$USER/backup_home.tar.gz` y se programó su ejecución periódica mediante **`cron`** (`crontab -e`), seleccionando `nano` como editor predeterminado y comprobando la instalación del `crontab.
 
-![Restauración de la copia de seguridad](imgs/restauracionCopiaSeguridad.png)
+![Selección de editor al ejecutar crontab -e](imgs/seleccionEditorCrontab.png)
+  ![Instalación de la tarea programada en crontab](imgs/crontabInstalado.png)
+
+> **INCIDENCIA 02 — Error de sintaxis en el script de automatización (`backup.sh`)**
+  > - **Problema detectado:** Al redactar inicialmente el script `backup.sh`, se introdujeron por error caracteres comodín (`*`) en lugar del guion de opciones y de los espacios en la ruta de destino (`tar *czf /*ome/$USER/backup_home.tar.gz*/home/$USER/Documentos`), lo que provocaba un fallo de sintaxis al ejecutar `tar` e impedía generar el archivo comprimido.
+  > - **Resolución aplicada:** Se revisó el archivo con `nano`, se corrigieron las opciones a `-czf` y las rutas absolutas (`/home/$USER/backup_home.tar.gz` y `/home/$USER/Documentos`), y se añadió una línea de confirmación (`echo "Copia de seguridad realizada"`) para verificar su correcta ejecución.
+
+  ![Incidencia de sintaxis en el script backup.sh](imgs/scriptBackupErrorSintaxis.png)
+  ![Script backup.sh corregido con tar](imgs/scriptBackupCorregido.png)
