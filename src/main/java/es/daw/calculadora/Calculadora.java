@@ -25,7 +25,7 @@ public class Calculadora {
         double primero = 0;
         double segundo = 0;
         double resultado = 0;
-        String lista [] = {"Sumar", "Restar", "Multiplicar", "Dividir", "Potencia", "Raiz cuadrada", "Seno (grados)", "Coseno (grados)", "Celsius a Fahrenheit", "Fahrenheit a Celsius", "Kilometros a millas", "Millas a kilometros", "Kilogramos a libras", "Libras a kilogramos", "Salir"};
+        String nombreOpcion [] = {"Sumar", "Restar", "Multiplicar", "Dividir", "Potencia", "Raiz cuadrada", "Seno (grados)", "Coseno (grados)", "Celsius a Fahrenheit", "Fahrenheit a Celsius", "Kilometros a millas", "Millas a kilometros", "Kilogramos a libras", "Libras a kilogramos", "Salir"};
 
         do {
             
@@ -34,56 +34,56 @@ public class Calculadora {
             System.out.println("       CALCULADORA SUPER TOTAL");
             System.out.println("======================================");
 
-            for (int i=0;i<lista.length;i++) {
-            System.out.println((i+1) + ". " + lista[i]);
+            for (int i=0;i<nombreOpcion.length;i++) {
+            System.out.println((i+1) + ". " + nombreOpcion[i]);
             }
 
             System.out.print("Elige una opcion: ");
             opcion = teclado.nextInt();
 
-            if (opcion == 1 || opcion == 2 || opcion == 3 || opcion == 4 || opcion == 5) {
+            if (opcion == OPCION_SUMAR || opcion == OPCION_RESTAR || opcion == OPCION_MULTIPLICAR || opcion == OPCION_DIVIDIR || opcion == OPCION_POTENCIA) {
                 System.out.print("Escribe el primer numero: ");
                 primero = teclado.nextDouble();
                 System.out.print("Escribe el segundo numero: ");
                 segundo = teclado.nextDouble();
                 resultado = calcular(opcion, primero, segundo);
                 System.out.println("El resultado final es: " + resultado);
-            } else if (opcion == 6 || opcion == 7 || opcion == 8 || opcion == 9
-                    || opcion == 10 || opcion == 11 || opcion == 12 || opcion == 13
-                    || opcion == 14) {
+            } else if (opcion == OPCION_RAIZ || opcion == OPCION_SENO || opcion == OPCION_COSENO || opcion == OPCION_CELSIUS_A_FAHRENHEIT
+                    || opcion == OPCION_FAHRENHEIT_A_CELSIUS || opcion == OPCION_KM_A_MILLAS || opcion == OPCION_MILLAS_A_KM || opcion == OPCION_KG_A_LIBRAS
+                    || opcion == OPCION_LIBRAS_A_KG) {
                 System.out.print("Escribe el valor: ");
                 primero = teclado.nextDouble();
                 segundo = 0;
                 resultado = calcular(opcion, primero, segundo);
 
-                if (opcion == 6) {
+                if (opcion == OPCION_RAIZ) {
                     System.out.println("La raiz es: " + resultado);
                 }
-                if (opcion == 7) {
+                if (opcion == OPCION_SENO) {
                     System.out.println("El seno de " + primero + " grados es " + resultado);
                 }
-                if (opcion == 8) {
+                if (opcion == OPCION_COSENO) {
                     System.out.println("El coseno de " + primero + " grados es " + resultado);
                 }
-                if (opcion == 9) {
+                if (opcion == OPCION_CELSIUS_A_FAHRENHEIT) {
                     System.out.println(primero + " Celsius son " + resultado + " Fahrenheit");
                 }
-                if (opcion == 10) {
+                if (opcion == OPCION_FAHRENHEIT_A_CELSIUS) {
                     System.out.println(primero + " Fahrenheit son " + resultado + " Celsius");
                 }
-                if (opcion == 11) {
+                if (opcion == OPCION_KM_A_MILLAS) {
                     System.out.println(primero + " kilometros son " + resultado + " millas");
                 }
-                if (opcion == 12) {
+                if (opcion == OPCION_MILLAS_A_KM) {
                     System.out.println(primero + " millas son " + resultado + " kilometros");
                 }
-                if (opcion == 13) {
+                if (opcion == OPCION_KG_A_LIBRAS) {
                     System.out.println(primero + " kilogramos son " + resultado + " libras");
                 }
-                if (opcion == 14) {
+                if (opcion == OPCION_LIBRAS_A_KG) {
                     System.out.println(primero + " libras son " + resultado + " kilogramos");
                 }
-            } else if (opcion == 15) {
+            } else if (opcion == OPCION_SALIR) {
                 System.out.println("Gracias por usar la calculadora");
             } else {
                 System.out.println("Opcion no valida. Prueba otra vez.");
