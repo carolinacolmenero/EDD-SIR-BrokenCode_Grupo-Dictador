@@ -3,6 +3,7 @@ package es.daw.calculadora;
 import java.util.Scanner;
 
 public class Calculadora {
+    private static final int DEFAULT_VALUE = 0;
     private static final int OPCION_SUMAR = 1;
     private static final int OPCION_RESTAR = 2;
     private static final int OPCION_MULTIPLICAR = 3;
@@ -21,10 +22,10 @@ public class Calculadora {
 
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        int opcion = 0;
-        double primero = 0;
-        double segundo = 0;
-        double resultado = 0;
+        int opcion = DEFAULT_VALUE;
+        double primero = DEFAULT_VALUE;
+        double segundo = DEFAULT_VALUE;
+        double resultado = DEFAULT_VALUE;
         String nombreOpcion[] = { "Sumar", "Restar", "Multiplicar", "Dividir", "Potencia", "Raiz cuadrada",
                 "Seno (grados)", "Coseno (grados)", "Celsius a Fahrenheit", "Fahrenheit a Celsius",
                 "Kilometros a millas", "Millas a kilometros", "Kilogramos a libras", "Libras a kilogramos", "Salir" };
@@ -58,7 +59,7 @@ public class Calculadora {
                         OPCION_KG_A_LIBRAS, OPCION_LIBRAS_A_KG -> {
                     System.out.print("Escribe el valor: ");
                     primero = teclado.nextDouble();
-                    segundo = 0;
+                    segundo = DEFAULT_VALUE;
                     resultado = calcular(opcion, primero, segundo);
                     if (opcion == OPCION_RAIZ) {
                         System.out.println("La raiz es: " + resultado);
@@ -91,13 +92,13 @@ public class Calculadora {
                 case OPCION_SALIR -> System.out.println("Gracias por usar la calculadora");
                 default -> System.out.println("Opcion no valida. Prueba otra vez.");
             }
-        } while (opcion != 0);
+        } while (opcion != OPCION_SALIR);
 
         teclado.close();
     }
 
     public static double calcular(int opcion, double primero, double segundo) {
-        double resultado = 0;
+        double resultado = DEFAULT_VALUE;
 
         if (opcion == OPCION_SUMAR) {
             resultado = primero + segundo;
@@ -107,7 +108,7 @@ public class Calculadora {
             resultado = primero * segundo;
         } else if (opcion == OPCION_DIVIDIR) {
             if (segundo == 0) {
-                resultado = 0;
+                resultado = DEFAULT_VALUE;
             } else {
                 resultado = primero / segundo;
             }
