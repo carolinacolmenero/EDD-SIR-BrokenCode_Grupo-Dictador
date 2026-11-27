@@ -97,46 +97,46 @@ public class Calculadora {
     }
 
     public static double calcular(int opcion, double primero, double segundo) {
-        double r = -999;
+        double resultado = 0;
 
-        if (opcion == 1) {
-            r = primero + segundo;
-        } else if (opcion == 2) {
-            r = primero - segundo;
-        } else if (opcion == 3) {
-            r = primero * segundo;
-        } else if (opcion == 4) {
+        if (opcion == OPCION_SUMAR) {
+            resultado = primero + segundo;
+        } else if (opcion == OPCION_RESTAR) {
+            resultado = primero - segundo;
+        } else if (opcion == OPCION_MULTIPLICAR) {
+            resultado = primero * segundo;
+        } else if (opcion == OPCION_DIVIDIR) {
             if (segundo == 0) {
-                r = 0;
+                resultado = 0;
             } else {
-                r = primero / segundo;
+                resultado = primero / segundo;
             }
-        } else if (opcion == 5) {
-            r = Math.pow(primero, segundo);
-        } else if (opcion == 6) {
+        } else if (opcion == OPCION_POTENCIA) {
+            resultado = Math.pow(primero, segundo);
+        } else if (opcion == OPCION_RAIZ) {
             if (primero < 0) {
-                r = Math.sqrt(primero * -1);
+                resultado = Math.sqrt(primero * -1);
             } else {
-                r = Math.sqrt(primero);
+                resultado = Math.sqrt(primero);
             }
-        } else if (opcion == 7) {
-            r = Math.sin(primero);
-        } else if (opcion == 8) {
-            r = Math.cos(primero * 3.14 / 180);
-        } else if (opcion == 9) {
-            r = primero * 1.8 + 32;
-        } else if (opcion == 10) {
-            r = primero - 32 / 1.8;
-        } else if (opcion == 11) {
-            r = primero * 0.62;
-        } else if (opcion == 12) {
-            r = primero * 1.6;
-        } else if (opcion == 13) {
-            r = primero * 2.2;
-        } else if (opcion == 14) {
-            r = primero / 2.2;
+        } else if (opcion == OPCION_SENO) {
+            resultado = Math.sin(primero);
+        } else if (opcion == OPCION_COSENO) {
+            resultado = Math.cos(primero * 3.14 / 180);
+        } else if (opcion == OPCION_FAHRENHEIT_A_CELSIUS) {
+            resultado = primero - 32 / 1.8;
+        } else if (opcion == OPCION_CELSIUS_A_FAHRENHEIT) {
+            resultado = primero * 1.8 + 32;
+        } else if (opcion == OPCION_MILLAS_A_KM) {
+            resultado = primero * 1.60934;
+        } else if (opcion == OPCION_KM_A_MILLAS) {
+            resultado = primero / 1.60934;
+        } else if (opcion == OPCION_KG_A_LIBRAS) {
+            resultado = primero * 2.2;
+        } else if (opcion == OPCION_LIBRAS_A_KG) {
+            resultado = primero / 2.2;
         }
 
-        return r;
+        return resultado;
     }
 }
