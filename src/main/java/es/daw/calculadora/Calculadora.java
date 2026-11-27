@@ -10,27 +10,19 @@ public class Calculadora {
         double primero = 0;
         double segundo = 0;
         double resultado = 0;
+        String lista [] = {"Sumar", "Restar", "Multiplicar", "Dividir", "Potencia", "Raiz cuadrada", "Seno (grados)", "Coseno (grados)", "Celsius a Fahrenheit", "Fahrenheit a Celsius", "Kilometros a millas", "Millas a kilometros", "Kilogramos a libras", "Libras a kilogramos", "Salir"};
 
         do {
+            
             System.out.println();
             System.out.println("======================================");
             System.out.println("       CALCULADORA SUPER TOTAL");
             System.out.println("======================================");
-            System.out.println("1. Sumar");
-            System.out.println("2. Restar");
-            System.out.println("3. Multiplicar");
-            System.out.println("4. Dividir");
-            System.out.println("5. Potencia");
-            System.out.println("6. Raiz cuadrada");
-            System.out.println("7. Seno (grados)");
-            System.out.println("8. Coseno (grados)");
-            System.out.println("9. Celsius a Fahrenheit");
-            System.out.println("10. Fahrenheit a Celsius");
-            System.out.println("11. Kilometros a millas");
-            System.out.println("12. Millas a kilometros");
-            System.out.println("13. Kilogramos a libras");
-            System.out.println("14. Libras a kilogramos");
-            System.out.println("0. Salir");
+
+            for (int i=0;i<lista.length;i++) {
+            System.out.println((i+1) + ". " + lista[i]);
+            }
+
             System.out.print("Elige una opcion: ");
             opcion = teclado.nextInt();
 
@@ -76,7 +68,7 @@ public class Calculadora {
                 if (opcion == 14) {
                     System.out.println(primero + " libras son " + resultado + " kilogramos");
                 }
-            } else if (opcion == 0) {
+            } else if (opcion == 15) {
                 System.out.println("Gracias por usar la calculadora");
             } else {
                 System.out.println("Opcion no valida. Prueba otra vez.");
