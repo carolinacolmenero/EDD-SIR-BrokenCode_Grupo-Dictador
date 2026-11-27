@@ -3,7 +3,22 @@ package es.daw.calculadora;
 import java.util.Scanner;
 
 public class Calculadora {
-
+    private static final int OPCION_SUMAR=1;
+    private static final int OPCION_RESTAR=2;
+    private static final int OPCION_MULTIPLICAR=3;
+    private static final int OPCION_DIVIDIR=4;
+    private static final int OPCION_POTENCIA=5;
+    private static final int OPCION_RAIZ=6;
+    private static final int OPCION_SENO=7;
+    private static final int OPCION_COSENO=8;
+    private static final int OPCION_CELSIUS_A_FAHRENHEIT=9;
+    private static final int OPCION_FAHRENHEIT_A_CELSIUS=10;
+    private static final int OPCION_KM_A_MILLAS=11;
+    private static final int OPCION_MILLAS_A_KM=12;
+    private static final int OPCION_KG_A_LIBRAS=13;
+    private static final int OPCION_LIBRAS_A_KG=14;
+    private static final int OPCION_SALIR=15;
+    
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
         int opcion = 88;
